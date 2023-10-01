@@ -1,5 +1,5 @@
 ## main.py
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, render_template
 from scene_processor import SceneProcessor
 from object_recognizer import ObjectRecognizer
 from question_answerer import QuestionAnswerer
@@ -20,7 +20,7 @@ class Main:
         
         @self.app.route("/")
         def home():
-            return send_from_directory('C:\\Users\\fkdah\\Desktop\\AI projekt\\MetaGPT\\workspace\\scene_interpreter\\scene_interpreter\\website', 'index.html')
+            return render_template("index.html")
 
         @self.app.route("/interpret", methods=["POST"])
         def interpret():

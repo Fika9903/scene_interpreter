@@ -5,8 +5,8 @@ from pytorchyolo import detect, models
 class ObjectRecognizer:
     def __init__(self):
         # Load the YOLO network using OpenCV's DNN module
-        self.net = cv2.dnn.readNet("C:\\Users\\fkdah\\Desktop\\skolsaker\\.Software Engineering\\Projektfiler\\YOLO Files\\yolov4.weights", 
-                               "C:\\Users\\fkdah\\Desktop\\skolsaker\\.Software Engineering\\Projektfiler\\YOLO Files\\yolov4.cfg")
+        self.net = 1 #cv2.dnn.readNet("C:\\Users\\fkdah\\Desktop\\skolsaker\\.Software Engineering\\Projektfiler\\YOLO Files\\yolov4.weights", 
+                     #           "C:\\Users\\fkdah\\Desktop\\skolsaker\\.Software Engineering\\Projektfiler\\YOLO Files\\yolov4.cfg")
 
     def recognize_objects(self, scene: dict) -> dict:
         """
