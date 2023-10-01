@@ -4,3 +4,4 @@ transformers
 opencv-python
 numpy
 openai
+pytorchyolo
