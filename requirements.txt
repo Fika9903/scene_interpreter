@@ -1,0 +1,6 @@
+flask
+pytorch
+transformers
+opencv-python
+numpy
+openai

@@ -1,0 +1,31 @@
+
+    classDiagram
+        class Main{
+            +Flask app
+            +str scene_description
+            +SceneProcessor scene_processor
+            +ObjectRecognizer object_recognizer
+            +QuestionAnswerer question_answerer
+            +SceneUpdater scene_updater
+            +run()
+        }
+        class SceneProcessor{
+            +dict scene
+            +process_scene(str: scene_description) -> dict
+        }
+        class ObjectRecognizer{
+            +YOLOv4 yolo
+            +recognize_objects(dict: scene) -> dict
+        }
+        class QuestionAnswerer{
+            +GPT3 gpt3
+            +answer_question(str: question, dict: scene) -> str
+        }
+        class SceneUpdater{
+            +update_scene(dict: scene) -> dict
+        }
+        Main "1" -- "1" SceneProcessor: uses
+        Main "1" -- "1" ObjectRecognizer: uses
+        Main "1" -- "1" QuestionAnswerer: uses
+        Main "1" -- "1" SceneUpdater: uses
+    

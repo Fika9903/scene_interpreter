@@ -1,0 +1,19 @@
+
+    sequenceDiagram
+        participant M as Main
+        participant SP as SceneProcessor
+        participant OR as ObjectRecognizer
+        participant QA as QuestionAnswerer
+        participant SU as SceneUpdater
+        M->>SP: process_scene(scene_description)
+        SP-->>M: scene
+        loop every few seconds
+            M->>OR: recognize_objects(scene)
+            OR-->>M: scene
+            M->>SU: update_scene(scene)
+            SU-->>M: scene
+        end
+        Note over M: User asks a question
+        M->>QA: answer_question(question, scene)
+        QA-->>M: answer
+    
