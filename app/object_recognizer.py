@@ -1,12 +1,15 @@
-## object_recognizer.py
+import os
 import cv2
 from pytorchyolo import detect, models
 
 class ObjectRecognizer:
     def __init__(self):
+        # Define the weights and config file paths relative to the project root
+        weights_path = os.path.join(os.getcwd(), 'weights', 'yolov4.weights')
+        config_path = os.path.join(os.getcwd(), 'weights', 'yolov4.cfg')
+
         # Load the YOLO network using OpenCV's DNN module
-        self.net = 1 #cv2.dnn.readNet("C:\\Users\\fkdah\\Desktop\\skolsaker\\.Software Engineering\\Projektfiler\\YOLO Files\\yolov4.weights", 
-                     #           "C:\\Users\\fkdah\\Desktop\\skolsaker\\.Software Engineering\\Projektfiler\\YOLO Files\\yolov4.cfg")
+        self.net = cv2.dnn.readNet(weights_path, config_path)
 
     def recognize_objects(self, scene: dict) -> dict:
         """

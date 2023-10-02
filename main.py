@@ -1,12 +1,12 @@
 ## main.py
 from flask import Flask, request, jsonify, render_template
-from scene_processor import SceneProcessor
-from object_recognizer import ObjectRecognizer
-from question_answerer import QuestionAnswerer
-from scene_updater import SceneUpdater
+from app.scene_processor import SceneProcessor
+from app.object_recognizer import ObjectRecognizer
+from app.question_answerer import QuestionAnswerer
+from app.scene_updater import SceneUpdater
+from config import debug
 import threading
 import time
-import os
 
 class Main:
     def __init__(self):
@@ -42,7 +42,7 @@ class Main:
                 time.sleep(5)
 
         threading.Thread(target=update_scene).start()
-        self.app.run(host="0.0.0.0", port=5000)
+        self.app.run(host="0.0.0.0", port=5000, debug=debug)
 
 if __name__ == "__main__":
     main = Main()
