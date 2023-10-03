@@ -14,9 +14,45 @@ class Main:
         self.scene_description = ""
         self.scene_processor = SceneProcessor()
         self.object_recognizer = ObjectRecognizer()
-        self.question_answerer = QuestionAnswerer("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")
+        self.question_answerer = QuestionAnswerer()
         self.scene_updater = SceneUpdater()
-        self.scene = {}
+        self.scene = {
+        "scene": {
+            "background": {
+            "type": "sky",
+            "color": "blue"
+            },
+            "objects": [
+            {
+                "type": "ground",
+                "position": {
+                "x": 0,
+                "y": 400
+                },
+                "size": {
+                "width": 800,
+                "height": 200
+                },
+                "color": "green"
+            },
+            {
+                "type": "dog",
+                "position": {
+                "x": 300,
+                "y": 350
+                },
+                "size": {
+                "width": 100,
+                "height": 50
+                },
+                "color": "brown",
+                "state": "running",
+                "direction": "right"
+            }
+            ]
+        }
+        }
+
         
         @self.app.route("/")
         def home():

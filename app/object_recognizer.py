@@ -9,7 +9,7 @@ class ObjectRecognizer:
         config_path = os.path.join(os.getcwd(), 'weights', 'yolov4.cfg')
 
         # Load the YOLO network using OpenCV's DNN module
-        self.net = cv2.dnn.readNet(weights_path, config_path)
+        #self.net = cv2.dnn.readNet(weights_path, config_path)
 
     def recognize_objects(self, scene: dict) -> dict:
         """
