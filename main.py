@@ -7,6 +7,11 @@ from app.scene_updater import SceneUpdater
 from config import debug
 import threading
 import time
+import os
+from dotenv import load_dotenv
+
+load_dotenv("config.env")
+secret_key = os.getenv("API_KEY")
 
 class Main:
     def __init__(self):
@@ -14,45 +19,9 @@ class Main:
         self.scene_description = ""
         self.scene_processor = SceneProcessor()
         self.object_recognizer = ObjectRecognizer()
-        self.question_answerer = QuestionAnswerer()
+        self.question_answerer = QuestionAnswerer(secret_key)
         self.scene_updater = SceneUpdater()
-        self.scene = {
-        "scene": {
-            "background": {
-            "type": "sky",
-            "color": "blue"
-            },
-            "objects": [
-            {
-                "type": "ground",
-                "position": {
-                "x": 0,
-                "y": 400
-                },
-                "size": {
-                "width": 800,
-                "height": 200
-                },
-                "color": "green"
-            },
-            {
-                "type": "dog",
-                "position": {
-                "x": 300,
-                "y": 350
-                },
-                "size": {
-                "width": 100,
-                "height": 50
-                },
-                "color": "brown",
-                "state": "running",
-                "direction": "right"
-            }
-            ]
-        }
-        }
-
+        self.scene = {}
         
         @self.app.route("/")
         def home():
