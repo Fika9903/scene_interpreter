@@ -7,6 +7,11 @@ from app.scene_updater import SceneUpdater
 from config import debug
 import threading
 import time
+import os
+from dotenv import load_dotenv
+
+load_dotenv("config.env")
+secret_key = os.getenv("API_KEY")
 
 class Main:
     def __init__(self):
@@ -14,7 +19,7 @@ class Main:
         self.scene_description = ""
         self.scene_processor = SceneProcessor()
         self.object_recognizer = ObjectRecognizer()
-        self.question_answerer = QuestionAnswerer()
+        self.question_answerer = QuestionAnswerer(secret_key)
         self.scene_updater = SceneUpdater()
         self.scene = {}
         
