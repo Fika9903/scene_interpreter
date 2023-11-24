@@ -1,0 +1,90 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'helvetica';
+}
+
+html, body {
+    background-color: #1e1e1e;  /* Dark grey background color */
+    margin: 0;
+    padding: 0;
+}
+
+button, input {
+    text-decoration: none;
+    border: none;
+}
+
+#chat-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Align chat messages to the bottom */
+    height: 100vh;
+}
+
+#asker {
+    
+    position: fixed;
+    bottom: 0;
+    right: 22%;
+    z-index: 1;
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.3); /* White shadow with 10px border radius */
+    border-radius: 10px; /* Border radius for the #asker itself */
+}
+
+#asker input {
+    background-color: #1e1e1e;   /* Grey input background color */
+    width: 1000px;
+    height: 70px;
+    border-radius: 10px;
+    color: white;
+}
+
+#asker button {
+    position: absolute;
+    bottom: 17px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background-color: #4d4d4d; /* Dark grey button color */
+    border-radius: 10px;
+    border: solid #1e1e1e;
+}
+
+#chatbox {
+    padding: 10px;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.bubble {
+    display: inline-block;
+    max-width: 70%;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    align-items: flex-end;
+    margin: 0; /* Remove margin */
+    padding: 0; /* Remove padding */
+}
+
+.user_bubble {
+    background-color: #464646; /* Dark grey user bubble color */
+    font-size: 15px;
+    padding: 10px;
+    color: white;
+    text-indent: 10%;
+}
+
+.Bot_Bubble {
+    background-color: #1e1e1e; /* Black bot bubble color */
+    font-size: 15px;
+    padding: 10px;
+    color: white;
+    text-indent: 10%;
+}
+
+.Bot_Icon {
+    width: 20px;
+    height: 20px;
+}
