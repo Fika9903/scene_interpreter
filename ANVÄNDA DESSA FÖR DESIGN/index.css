@@ -1,8 +1,15 @@
+/*RÄTT*/
+
+
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
     font-family: 'helvetica';
+}
+::placeholder{
+    font-size: 20px;
+    
 }
 
 html, body {
@@ -16,21 +23,25 @@ button, input {
     border: none;
 }
 
+input{
+    font-size: 20px;
+}
+
 #chat-container {
     display: flex;
     flex-direction: column;
     justify-content: flex-end; /* Align chat messages to the bottom */
-    height: 100vh;
+    height: 90vh;
 }
 
 #asker {
     
     position: fixed;
     bottom: 0;
-    right: 22%;
+    right: 14%;
     z-index: 1;
-    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.3); /* White shadow with 10px border radius */
-    border-radius: 10px; /* Border radius for the #asker itself */
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.3); 
+    border-radius: 10px; 
 }
 
 #asker input {
@@ -64,8 +75,8 @@ button, input {
     margin-bottom: 10px;
     border-radius: 15px;
     align-items: flex-end;
-    margin: 0; /* Remove margin */
-    padding: 0; /* Remove padding */
+    margin: 0; 
+    padding: 0; 
 }
 
 .user_bubble {
