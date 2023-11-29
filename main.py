@@ -1,72 +1,53 @@
-## main.py
 from flask import Flask, request, jsonify, render_template
-from app.scene_processor import SceneProcessor
-from app.object_recognizer import ObjectRecognizer
 from app.question_answerer import QuestionAnswerer
-from app.scene_updater import SceneUpdater
-from config import debug
+#from autogen import update_JSON
+from dotenv import load_dotenv
+import json
 import threading
 import time
 import os
-import json  # Import the json module
-from dotenv import load_dotenv
 
 load_dotenv("config.env")
 secret_key = os.getenv("API_KEY")
 
-class Main:
-    def __init__(self):
-        self.app = Flask(__name__)
-        self.scene_description = ""
-        self.scene_processor = SceneProcessor()
-        self.object_recognizer = ObjectRecognizer()
-        self.question_answerer = QuestionAnswerer(secret_key)
-        self.scene_updater = SceneUpdater()
-        self.scene = {}
-        self.json_data = {}
-        
-        @self.app.route("/")
-        def home():
-            return render_template("index.html")
+app = Flask(__name__)
+question_answerer = QuestionAnswerer(secret_key)
 
-        @self.app.route("/interpret", methods=["POST"])
-        def interpret():
-            json_data = self.read_json_file()
-            print(json_data)
-            if not json_data or "scene_description" not in json_data:
-                return jsonify({"error": "Invalid or missing 'scene_description'"}), 400
-            try:
-                self.scene = self.scene_processor.process_scene(self.scene_description)
-                return jsonify({"scene": self.scene})
-            except ValueError as e:
-                return jsonify({"error": str(e)}), 400
+# Data variable to store objects and their descriptions
+json_data = {}
+updated_json_data = {}
 
-        @self.app.route("/ask", methods=["POST"])
-        def ask():
-            question = request.json.get("question", "")
-            print(question)
-            json_data = self.read_json_file()  # Read data from JSON file
-            answer = self.question_answerer.answer_question(question, json_data)  # Use the data from the JSON file
-            return jsonify({"answer": answer})
+def read_and_update_json():
+    global json_data
+    while True:
+        try:
+            with open('data.json', 'r') as file:
+                new_data = json.load(file)
+                if new_data != json_data:
+                    json_data = new_data
+                else:
+                    break  # Break if data is up to date
+        except Exception as e:
+            print(f"Error reading JSON file: {e}")
+        time.sleep(5)  # Update interval, change as needed
 
-        def update_scene():
-            while True:
-                self.scene = self.object_recognizer.recognize_objects(self.scene)
-                self.scene = self.scene_updater.update_scene(self.scene)
-                time.sleep(5)
+@app.route("/")
+def home():
+    return render_template("index.html")
 
-        threading.Thread(target=update_scene).start()
+@app.route('/ask', methods=['POST'])
+def ask():
+    question = request.json.get("question", "")
+    answer = question_answerer.answer_question(question, json_data)
+    print(answer)
+    print(f'Question: {question}')
+    # Logic to process the question would go here
+    # For now, just returning the question as a placeholder
+    return jsonify({"answer": f"{answer}"})
 
-    def read_json_file(self):
-        # Replace 'path_to_json_file.json' with the actual path to your JSON file
-        with open('UE/SceneInterpreter/Saved/MyActors.json', 'r') as file:
-            data = json.load(file)
-            print(data)
-        return data
-
-    def run(self):
-        self.app.run(host="0.0.0.0", port=5000, debug=debug)
-
-if __name__ == "__main__":
-    main = Main()
-    main.run()
+if __name__ == '__main__':
+    # Start the background thread for updating JSON data
+    threading.Thread(target=read_and_update_json, daemon=True).start()
+    
+    # Start the Flask application
+    app.run(debug=True)

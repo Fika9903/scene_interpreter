@@ -1,0 +1,5 @@
+Based on your current understanding of the files and all of the code, I want you to create a new Flask server from scratch that takes inspiration from this code but makes it much cleaner and doesn't have any bloated, unecessary, code. Here are the things i want the server to contain:
+
+- It should be able to take a question as input (like the previous flask server could) and parse it in the same way. Basically keep the ask() function since that worked well.
+- It should store a data variable in JSON format which will store a list of objects and object descriptions.
+- It should read a JSON file and update the JSON variable with any new information. If the information is up to date with the JSON file it should break the function and do nothing. This function is suppose to run in the background with a given interval on the server so the JSON is almost constantly refreshed.

@@ -1,0 +1,772 @@
+[
+	{
+		"Name": "WorldInfo_0",
+		"Description": "WorldInfo",
+		"Location":
+		{
+			"X": 0,
+			"Y": 0,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "Brush_0",
+		"Description": "Brush",
+		"Location":
+		{
+			"X": -470,
+			"Y": 350,
+			"Z": 130
+		}
+	},
+	{
+		"Name": "StaticMeshActor_13",
+		"Description": "SM_Cube9",
+		"Location":
+		{
+			"X": 2345,
+			"Y": 400,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "StaticMeshActor_26",
+		"Description": "SM_QuarterCylinder12",
+		"Location":
+		{
+			"X": 2300,
+			"Y": 2750,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "ExponentialHeightFog_0",
+		"Description": "ExponentialHeightFog",
+		"Location":
+		{
+			"X": -5600,
+			"Y": -50,
+			"Z": -6850
+		}
+	},
+	{
+		"Name": "VolumetricCloud_0",
+		"Description": "VolumetricCloud",
+		"Location":
+		{
+			"X": 0,
+			"Y": 0,
+			"Z": 820
+		}
+	},
+	{
+		"Name": "StaticMeshActor_45",
+		"Description": "SM_ChamferCube11",
+		"Location":
+		{
+			"X": 362.87091355558482,
+			"Y": 3200.3631434376571,
+			"Z": 50.062462421864879
+		}
+	},
+	{
+		"Name": "DirectionalLight_1",
+		"Description": "DirectionalLight",
+		"Location":
+		{
+			"X": 0,
+			"Y": 0,
+			"Z": 920
+		}
+	},
+	{
+		"Name": "StaticMeshActor_25",
+		"Description": "SM_QuarterCylinder11",
+		"Location":
+		{
+			"X": 2300,
+			"Y": 2750,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "StaticMeshActor_12",
+		"Description": "SM_Cube8",
+		"Location":
+		{
+			"X": 100.0000292031159,
+			"Y": 1600.0000024335918,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "StaticMeshActor_23",
+		"Description": "SM_Cube13",
+		"Location":
+		{
+			"X": 700,
+			"Y": 2800,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "StaticMeshActor_40",
+		"Description": "SM_ChamferCube8",
+		"Location":
+		{
+			"X": 2400.0000531971309,
+			"Y": 1360.0000739454902,
+			"Z": 75.062487445641992
+		}
+	},
+	{
+		"Name": "StaticMeshActor_50",
+		"Description": "SM_ChamferCube15",
+		"Location":
+		{
+			"X": 2530.4112428513486,
+			"Y": 2237.371235805143,
+			"Z": 50.06328461542698
+		}
+	},
+	{
+		"Name": "TextRenderActor_1",
+		"Description": "TextRenderActor",
+		"Location":
+		{
+			"X": -0.10000000000000001,
+			"Y": 1100,
+			"Z": 140.01269500000001
+		}
+	},
+	{
+		"Name": "StaticMeshActor_6",
+		"Description": "SM_Ramp2",
+		"Location":
+		{
+			"X": 2345,
+			"Y": 400,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "StaticMeshActor_3",
+		"Description": "SM_Cube2",
+		"Location":
+		{
+			"X": 0,
+			"Y": 0,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "StaticMeshActor_1",
+		"Description": "SM_ChamferCube",
+		"Location":
+		{
+			"X": 584.35633139194567,
+			"Y": 206.55306234270282,
+			"Z": 50.067936523294236
+		}
+	},
+	{
+		"Name": "StaticMeshActor_5",
+		"Description": "SM_Cube4",
+		"Location":
+		{
+			"X": 1745,
+			"Y": 600,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "StaticMeshActor_47",
+		"Description": "SM_ChamferCube13",
+		"Location":
+		{
+			"X": 320.73744795959078,
+			"Y": 3165.011615933855,
+			"Z": 150.06276304838221
+		}
+	},
+	{
+		"Name": "StaticMeshActor_42",
+		"Description": "SM_Ramp5",
+		"Location":
+		{
+			"X": 2900,
+			"Y": 1900,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "StaticMeshActor_24",
+		"Description": "SM_ChamferCube17",
+		"Location":
+		{
+			"X": 428.40430276916527,
+			"Y": 1308.9868708433364,
+			"Z": 50.062584029308674
+		}
+	},
+	{
+		"Name": "StaticMeshActor_15",
+		"Description": "SM_Cube10",
+		"Location":
+		{
+			"X": 2345,
+			"Y": 1000,
+			"Z": 100
+		}
+	},
+	{
+		"Name": "StaticMeshActor_33",
+		"Description": "SM_Cube14",
+		"Location":
+		{
+			"X": 1300,
+			"Y": 2700,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "SkyLight_0",
+		"Description": "SkyLight",
+		"Location":
+		{
+			"X": 0,
+			"Y": 0,
+			"Z": 690
+		}
+	},
+	{
+		"Name": "StaticMeshActor_34",
+		"Description": "SM_Cube15",
+		"Location":
+		{
+			"X": 2899.9999942167988,
+			"Y": 1900.0000296367061,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "StaticMeshActor_4",
+		"Description": "SM_Cube3",
+		"Location":
+		{
+			"X": 0,
+			"Y": 3400,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "StaticMeshActor_17",
+		"Description": "SM_QuarterCylinder",
+		"Location":
+		{
+			"X": 1200.0000292031154,
+			"Y": 1800.0000024335923,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "StaticMeshActor_21",
+		"Description": "SM_QuarterCylinder4",
+		"Location":
+		{
+			"X": 700,
+			"Y": 2700,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "StaticMeshActor_22",
+		"Description": "SM_QuarterCylinder5",
+		"Location":
+		{
+			"X": 700,
+			"Y": 2800,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "StaticMeshActor_43",
+		"Description": "SM_ChamferCube9",
+		"Location":
+		{
+			"X": 1022.215692995105,
+			"Y": 549.61222162941999,
+			"Z": 141.64149955827924
+		}
+	},
+	{
+		"Name": "StaticMeshActor_0",
+		"Description": "SM_Cube",
+		"Location":
+		{
+			"X": 0,
+			"Y": 0,
+			"Z": -50
+		}
+	},
+	{
+		"Name": "StaticMeshActor_49",
+		"Description": "SM_ChamferCube14",
+		"Location":
+		{
+			"X": 2530.4108535991563,
+			"Y": 2352.3711389902151,
+			"Z": 50.062285078146658
+		}
+	},
+	{
+		"Name": "StaticMeshActor_30",
+		"Description": "SM_ChamferCube5",
+		"Location":
+		{
+			"X": 1871.0930258445701,
+			"Y": 3043.2050726143575,
+			"Z": 75.062472082277949
+		}
+	},
+	{
+		"Name": "StaticMeshActor_41",
+		"Description": "SM_Ramp4",
+		"Location":
+		{
+			"X": 100,
+			"Y": 1600,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "StaticMeshActor_44",
+		"Description": "SM_ChamferCube10",
+		"Location":
+		{
+			"X": 1261.6025134989545,
+			"Y": 433.19811374994987,
+			"Z": 55.319783476770972
+		}
+	},
+	{
+		"Name": "StaticMeshActor_14",
+		"Description": "SM_Ramp3",
+		"Location":
+		{
+			"X": 2545,
+			"Y": 1000,
+			"Z": 100
+		}
+	},
+	{
+		"Name": "StaticMeshActor_8",
+		"Description": "SM_ChamferCube3",
+		"Location":
+		{
+			"X": 360.00002762477112,
+			"Y": 2229.9999216398669,
+			"Z": 75.062453523133158
+		}
+	},
+	{
+		"Name": "StaticMeshActor_46",
+		"Description": "SM_ChamferCube12",
+		"Location":
+		{
+			"X": 274.77587467208872,
+			"Y": 3126.4423758242251,
+			"Z": 50.062827228216534
+		}
+	},
+	{
+		"Name": "PlayerStart_0",
+		"Description": "PlayerStart",
+		"Location":
+		{
+			"X": 900,
+			"Y": 850,
+			"Z": 92.012603999999996
+		}
+	},
+	{
+		"Name": "StaticMeshActor_18",
+		"Description": "SM_QuarterCylinder2",
+		"Location":
+		{
+			"X": 1200.0000292031143,
+			"Y": 1700.0000024335914,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "StaticMeshActor_19",
+		"Description": "SM_Cube12",
+		"Location":
+		{
+			"X": 1200.0000292031143,
+			"Y": 1700.0000024335914,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "StaticMeshActor_32",
+		"Description": "SM_QuarterCylinder8",
+		"Location":
+		{
+			"X": 1300,
+			"Y": 2700,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "StaticMeshActor_31",
+		"Description": "SM_QuarterCylinder7",
+		"Location":
+		{
+			"X": 1300.000004867185,
+			"Y": 2799.9999999999995,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "StaticMeshActor_16",
+		"Description": "SM_Cube11",
+		"Location":
+		{
+			"X": 700,
+			"Y": 2600,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "StaticMeshActor_37",
+		"Description": "SM_Cube16",
+		"Location":
+		{
+			"X": 1799.999999083986,
+			"Y": 1799.9999712304782,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "StaticMeshActor_51",
+		"Description": "SM_ChamferCube16",
+		"Location":
+		{
+			"X": 2530.4090696321618,
+			"Y": 2297.3737697471729,
+			"Z": 150.06359856550077
+		}
+	},
+	{
+		"Name": "StaticMeshActor_35",
+		"Description": "SM_QuarterCylinder9",
+		"Location":
+		{
+			"X": 1800.0000039511729,
+			"Y": 1699.9999712304789,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "StaticMeshActor_10",
+		"Description": "SM_Cube6",
+		"Location":
+		{
+			"X": 3000,
+			"Y": 100,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "StaticMeshActor_28",
+		"Description": "SM_QuarterCylinder14",
+		"Location":
+		{
+			"X": 2300,
+			"Y": 2750,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "StaticMeshActor_27",
+		"Description": "SM_QuarterCylinder13",
+		"Location":
+		{
+			"X": 2300,
+			"Y": 2750,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "StaticMeshActor_36",
+		"Description": "SM_QuarterCylinder10",
+		"Location":
+		{
+			"X": 1799.999999083986,
+			"Y": 1799.9999712304782,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "StaticMeshActor_38",
+		"Description": "SM_ChamferCube18",
+		"Location":
+		{
+			"X": 407.88100328141627,
+			"Y": 1252.6054830657306,
+			"Z": 150.06277370967754
+		}
+	},
+	{
+		"Name": "StaticMeshActor_29",
+		"Description": "SM_ChamferCube4",
+		"Location":
+		{
+			"X": 660.2766152854764,
+			"Y": 552.86254666848799,
+			"Z": 75.286392875354323
+		}
+	},
+	{
+		"Name": "SkyAtmosphere_0",
+		"Description": "SkyAtmosphere",
+		"Location":
+		{
+			"X": 0,
+			"Y": 0,
+			"Z": 1020
+		}
+	},
+	{
+		"Name": "StaticMeshActor_UAID_A4AE111137DC5EFB00_2001720423",
+		"Description": "SM_SkySphere",
+		"Location":
+		{
+			"X": 0,
+			"Y": 0,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "PostProcessVolume_0",
+		"Description": "PostProcessVolume",
+		"Location":
+		{
+			"X": 100,
+			"Y": 100,
+			"Z": 500
+		}
+	},
+	{
+		"Name": "StaticMeshActor_9",
+		"Description": "SM_Cube5",
+		"Location":
+		{
+			"X": 100,
+			"Y": 100,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "StaticMeshActor_20",
+		"Description": "SM_ChamferCube2",
+		"Location":
+		{
+			"X": 389.071990391074,
+			"Y": 1200.9219823605149,
+			"Z": 50.062639011537719
+		}
+	},
+	{
+		"Name": "DefaultPhysicsVolume_0",
+		"Description": "DefaultPhysicsVolume0",
+		"Location":
+		{
+			"X": 0,
+			"Y": 0,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "GameplayDebuggerPlayerManager_0",
+		"Description": "GameplayDebuggerPlayerManager0",
+		"Location":
+		{
+			"X": 0,
+			"Y": 0,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "ChaosDebugDrawActor",
+		"Description": "Actor",
+		"Location":
+		{
+			"X": 0,
+			"Y": 0,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "BP_FirstPersonGameMode_C_0",
+		"Description": "BP_FirstPersonGameMode0",
+		"Location":
+		{
+			"X": 0,
+			"Y": 0,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "GameSession_0",
+		"Description": "GameSession0",
+		"Location":
+		{
+			"X": 0,
+			"Y": 0,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "ParticleEventManager_0",
+		"Description": "ParticleEventManager0",
+		"Location":
+		{
+			"X": 0,
+			"Y": 0,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "GameNetworkManager_0",
+		"Description": "GameNetworkManager0",
+		"Location":
+		{
+			"X": 0,
+			"Y": 0,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "WorldDataLayers",
+		"Description": "WorldDataLayers",
+		"Location":
+		{
+			"X": 0,
+			"Y": 0,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "FirstPersonMap_C_0",
+		"Description": "FirstPersonMap0",
+		"Location":
+		{
+			"X": 0,
+			"Y": 0,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "WorldPartitionReplay",
+		"Description": "WorldPartitionReplay",
+		"Location":
+		{
+			"X": 0,
+			"Y": 0,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "GameStateBase_0",
+		"Description": "GameStateBase0",
+		"Location":
+		{
+			"X": 0,
+			"Y": 0,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "AbstractNavData-Default",
+		"Description": "AbstractNavData",
+		"Location":
+		{
+			"X": 0,
+			"Y": 0,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "BP_FirstPersonPlayerController_C_0",
+		"Description": "BP_FirstPersonPlayerController0",
+		"Location":
+		{
+			"X": 900,
+			"Y": 850,
+			"Z": 92.012603999999996
+		}
+	},
+	{
+		"Name": "PlayerState_0",
+		"Description": "PlayerState0",
+		"Location":
+		{
+			"X": 0,
+			"Y": 0,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "PlayerCameraManager_0",
+		"Description": "PlayerCameraManager0",
+		"Location":
+		{
+			"X": 1252.0447377448372,
+			"Y": 557.48337028400817,
+			"Z": 158.33750176611329
+		}
+	},
+	{
+		"Name": "HUD_0",
+		"Description": "HUD0",
+		"Location":
+		{
+			"X": 0,
+			"Y": 0,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "BP_FirstPersonCharacter_C_0",
+		"Description": "BP_FirstPersonCharacter0",
+		"Location":
+		{
+			"X": 1248.5835670057024,
+			"Y": 548.10145698689416,
+			"Z": 98.337501766113277
+		}
+	},
+	{
+		"Name": "GameplayDebuggerCategoryReplicator_0",
+		"Description": "GameplayDebuggerCategoryReplicator0",
+		"Location":
+		{
+			"X": 0,
+			"Y": 0,
+			"Z": 0
+		}
+	},
+	{
+		"Name": "BP_FirstPersonProjectile_C_0",
+		"Description": "BP_FirstPersonProjectile0",
+		"Location":
+		{
+			"X": 2146.8757310128362,
+			"Y": 200.092516642356,
+			"Z": 16.064436277982171
+		}
+	}
+]

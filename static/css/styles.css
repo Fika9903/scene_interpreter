@@ -1,15 +1,18 @@
-/*RÄTT*/
+div {
+    text-align: left; /* Aligns text to the left */
+    padding-left: 10px; /* Adds some space between the text and the left side of the div */
+}
 
 
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-family: 'helvetica';
+    font-family: 'Helvetica';
 }
-::placeholder{
-    font-size: 20px;
-    
+
+::placeholder {
+    font-size: 1.25rem; /* Relative font size */
 }
 
 html, body {
@@ -23,22 +26,21 @@ button, input {
     border: none;
 }
 
-input{
-    font-size: 20px;
+input {
+    font-size: 1.25rem; /* Relative font size */
 }
 
 #chat-container {
     display: flex;
     flex-direction: column;
     justify-content: flex-end; /* Align chat messages to the bottom */
-    height: 90vh;
+    height: 90vh; /* Relative to viewport height */
 }
 
 #asker {
-    
     position: fixed;
     bottom: 0;
-    right: 14%;
+    right: 5%; /* Adjusted for responsiveness */
     z-index: 1;
     box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.3); 
     border-radius: 10px; 
@@ -46,8 +48,8 @@ input{
 
 #asker input {
     background-color: #1e1e1e;   /* Grey input background color */
-    width: 1000px;
-    height: 70px;
+    width: 80vw; /* Relative to viewport width */
+    height: 7vh; /* Relative to viewport height */
     border-radius: 10px;
     color: white;
 }
@@ -71,7 +73,7 @@ input{
 
 .bubble {
     display: inline-block;
-    max-width: 70%;
+    max-width: 70%; /* Relative to parent width */
     margin-bottom: 10px;
     border-radius: 15px;
     align-items: flex-end;
@@ -79,9 +81,14 @@ input{
     padding: 0; 
 }
 
-.user_bubble {
+.user_bubble, .Bot_Bubble {
+    text-align: left;
+    text-indent: 0;
+    padding-left: 10px; /* Adjust as needed */
+    margin-left: 0; /* Adjust as needed */
+    white-space: normal; /* This ensures text wraps */
     background-color: #464646; /* Dark grey user bubble color */
-    font-size: 15px;
+    font-size: 1rem; /* Relative font size */
     padding: 10px;
     color: white;
     text-indent: 10%;
@@ -89,13 +96,28 @@ input{
 
 .Bot_Bubble {
     background-color: #1e1e1e; /* Black bot bubble color */
-    font-size: 15px;
-    padding: 10px;
-    color: white;
-    text-indent: 10%;
 }
 
 .Bot_Icon {
     width: 20px;
     height: 20px;
 }
+
+/* Existing result paragraphs styling */
+#interpretResult, #askResult {
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 4px;
+    width: 50%;
+    max-width: 500px;
+    background-color: #fff;
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Ensure the text aligns to the center */
+}
+
+/* Center align the text within paragraphs if they exist */
+#interpretResult p, #askResult p {
+    text-align: center; 
+}
+
+/* Add this after your existing styles for #interpretResult and #askResult */
