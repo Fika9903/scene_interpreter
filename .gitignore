@@ -1,6 +1,7 @@
 config.env
 config.py
 /UE/*
+!/UE/.gitkeep
 .cache
 app/__pycache__
 app/__pycache__/*
