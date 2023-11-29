@@ -1,68 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <!--RÄTT-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scene Interpreter</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Document</title>
 </head>
-
 <body>
-    <h1>Scene Interpreter</h1>
+    <div id="chat-container">
+    
+        <!--Där input för asker, samt knappen -->
+        <div id="asker">
+            <input type="text" id="UserInput" placeholder="Ask something"> 
+            <button onclick="sendMessage()">??</button>
+        </div>
 
-    <h2>Interpret Scene</h2>
-    <form id="interpretForm">
-        <label for="scene_description">Scene Description:</label>
-        <textarea id="scene_description" name="scene_description" rows="4" cols="50"></textarea>
-        <button type="button" onclick="interpretScene()">Interpret</button>
-    </form>
-    <p id="interpretResult"></p>
-
-    <h2>Ask Question</h2>
-    <form id="askForm">
-        <label for="question">Question:</label>
-        <input type="text" id="question" name="question">
-        <button type="button" onclick="askQuestion()">Ask</button>
-    </form>
-    <p id="askResult"></p>
-
-    <script>
-        async function interpretScene() {
-            const sceneDescription = document.getElementById('scene_description').value;
-            try {
-                const response = await fetch('http://127.0.0.1:5000/interpret', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ scene_description: sceneDescription })
-                });
-                const data = await response.json();
-                document.getElementById('interpretResult').textContent = JSON.stringify(data);
-            } catch (error) {
-                console.error('Error during fetch operation: ', error);
-            }
-        }
-
-        async function askQuestion() {
-            const question = document.getElementById('question').value;
-            try {
-                const response = await fetch('http://127.0.0.1:5000/ask', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ question: question })
-                });
-                const data = await response.json();
-                // Parse and display the answer in a readable format
-                document.getElementById('askResult').innerHTML = data.answer.replace(/\n/g, '<br>');
-            } catch (error) {
-                console.error('Error during fetch operation: ', error);
-            }
-        }
-    </script>
+        <!--Här kommer frågan poppa upp samt svaren-->
+        <div id="chatbox"></div>
+    </div>  
+            
+    <script src="static/JS/index.js"></script>
 </body>
-
 </html>

@@ -1,72 +1,101 @@
-/* Reset some default styling in browsers */
-body {
+/*RÄTT*/
+
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'helvetica';
+}
+::placeholder{
+    font-size: 20px;
+    
+}
+
+html, body {
+    background-color: #1e1e1e;  /* Dark grey background color */
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f0f0f0;
 }
 
-/* Header styles */
-h1 {
-    color: #333;
-    text-align: center;
-    margin-top: 20px;
-}
-
-h2 {
-    color: #666;
-    margin-top: 20px;
-    text-align: center;
-}
-
-/* Form styling */
-form {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.2);
-    margin: 20px auto;
-    width: 50%;
-    max-width: 500px;
-}
-
-label {
-    display: block;
-    margin: 10px 0 5px;
-}
-
-textarea, input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-}
-
-button {
-    display: inline-block;
-    background-color: #28a745;
-    color: #fff;
-    padding: 10px 20px;
+button, input {
+    text-decoration: none;
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-align: center;
 }
 
-button:hover {
-    background-color: #218838;
+input{
+    font-size: 20px;
 }
 
-/* Result paragraphs styling */
-#interpretResult, #askResult {
-    margin: 20px auto;
+#chat-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Align chat messages to the bottom */
+    height: 90vh;
+}
+
+#asker {
+    
+    position: fixed;
+    bottom: 0;
+    right: 14%;
+    z-index: 1;
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.3); 
+    border-radius: 10px; 
+}
+
+#asker input {
+    background-color: #1e1e1e;   /* Grey input background color */
+    width: 1000px;
+    height: 70px;
+    border-radius: 10px;
+    color: white;
+}
+
+#asker button {
+    position: absolute;
+    bottom: 17px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background-color: #4d4d4d; /* Dark grey button color */
+    border-radius: 10px;
+    border: solid #1e1e1e;
+}
+
+#chatbox {
     padding: 10px;
-    border-radius: 4px;
-    width: 50%;
-    max-width: 500px;
-    background-color: #fff;
-    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    overflow-y: auto;
+}
+
+.bubble {
+    display: inline-block;
+    max-width: 70%;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    align-items: flex-end;
+    margin: 0; 
+    padding: 0; 
+}
+
+.user_bubble {
+    background-color: #464646; /* Dark grey user bubble color */
+    font-size: 15px;
+    padding: 10px;
+    color: white;
+    text-indent: 10%;
+}
+
+.Bot_Bubble {
+    background-color: #1e1e1e; /* Black bot bubble color */
+    font-size: 15px;
+    padding: 10px;
+    color: white;
+    text-indent: 10%;
+}
+
+.Bot_Icon {
+    width: 20px;
+    height: 20px;
 }
