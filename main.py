@@ -15,7 +15,12 @@ question_answerer = QuestionAnswerer(secret_key)
 
 # Data variable to store objects and their descriptions
 json_data = {}
+
+# updated_json_data kommer senare användas för att lagra den uppdaterade versionen av JSON
+# som består av semantic beskrivningen. Just nu används den inte eftersom den funktionen inte
+# implementerats än.
 updated_json_data = {}
+
 
 def read_and_update_json():
     global json_data
