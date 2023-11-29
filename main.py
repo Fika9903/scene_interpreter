@@ -10,6 +10,8 @@ import os
 load_dotenv("config.env")
 secret_key = os.getenv("API_KEY")
 
+
+
 app = Flask(__name__)
 question_answerer = QuestionAnswerer(secret_key)
 
@@ -22,11 +24,11 @@ json_data = {}
 updated_json_data = {}
 
 
-def read_and_update_json():
+def read_and_update_json(file_path):
     global json_data
     while True:
         try:
-            with open('data.json', 'r') as file:
+            with open(file_path, 'r') as file:
                 new_data = json.load(file)
                 if new_data != json_data:
                     json_data = new_data
@@ -52,7 +54,12 @@ def ask():
 
 if __name__ == '__main__':
     # Start the background thread for updating JSON data
-    threading.Thread(target=read_and_update_json, daemon=True).start()
+    
+    # Här laddas directory för JSON filen så att det ska fungera på flera datorer.
+    # Denna lösning ska eliminera behovet av att hårdkoda en filaddress
+    base_directory = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
+    json_filepath = os.path.join(base_directory, 'UE', 'scene_interpreter', 'Saved', 'MyActors.json')
+    threading.Thread(target=read_and_update_json, args=(json_filepath,), daemon=True).start()
     
     # Start the Flask application
     app.run(debug=True)

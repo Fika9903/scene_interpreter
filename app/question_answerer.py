@@ -1,10 +1,9 @@
 import openai
 import json
-from config import api_token
 
 
 class QuestionAnswerer:
-    def __init__(self, api_key=api_token):
+    def __init__(self, api_key):
         self.api_key = api_key
         
     def answer_question(self, question: str, scene: dict) -> str:
