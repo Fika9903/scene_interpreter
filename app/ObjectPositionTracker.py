@@ -1,77 +1,52 @@
-import json
 import datetime
+import json
+import time
+import os
 
-def read_json_file(file_path):
-    try:
-        with open(file_path, 'r') as file:
-            return json.load(file)
-    except Exception as e:
-        print(f"Error reading JSON file: {e}")
-        return None
+json_data = {}
+object_history = {}
 
-def update_object_positions(objects, tracking_dict, current_time):
-    for obj in objects:
-        name = obj['Name']
-        # Round the coordinates to one decimal place
-        position = (round(obj['Location']['X'], 1), round(obj['Location']['Y'], 1), round(obj['Location']['Z'], 1))
+def find_changes(new_data, old_data):
+    changed_items = []
 
-        if name not in tracking_dict:
-            tracking_dict[name] = [(current_time, position)]
-        else:
-            last_position = tracking_dict[name][-1][1]
-            if position != last_position:
-                tracking_dict[name].append((current_time, position))
+    # Check if old_data is empty, then all new_data items are changes
+    if not old_data:
+        return new_data
 
+    # Create a mapping of the old data for quick lookup
+    old_data_mapping = {item['Name']: item for item in old_data}
 
-def get_object_history(object_name, tracking_dict):
-    return tracking_dict.get(object_name, None)
+    for new_item in new_data:
+        name = new_item['Name']
+        # Check if the item exists in old data and if it has changed
+        if name not in old_data_mapping or new_item != old_data_mapping[name]:
+            changed_items.append(new_item)
 
-def main(json_file_path):
-    object_tracking_dict = {}
+    return changed_items
+
+def read_and_update_json(file_path):
+    global json_data
     while True:
-        objects = read_json_file(json_file_path)
-        if objects is None:
-            break
+        try:
+            with open(file_path, 'r') as file:
+                new_data = json.load(file)
+                if new_data != json_data:
+                    changes = find_changes(new_data,json_data)
+                    json_data = new_data
+                    print(changes)
+                    current_time = datetime.datetime.now().strftime("%H:%M:%S")
+                    for items in changes:
+                        if items['Name'] in object_history:
+                            print_object_history(items['Name'])
+                            object_history[items['Name']][current_time] = items['Location']
+                        else:
+                            object_history[items['Name']] = {current_time:items['Location']}
+                else:
+                    print("No new data, closing shop!")
+        except Exception as e:
+            print(f"Error reading JSON file: {e}")
+        time.sleep(5)  # Update interval, change as needed
 
-        current_time = datetime.datetime.now().strftime("%H:%M:%S")
-        update_object_positions(objects, object_tracking_dict, current_time)
-
-        # Add a delay or trigger for the next update here
-        # For demonstration, we'll just break out of the loop
-        break
-
-    print("Tracking Data:")
-    for obj, positions in object_tracking_dict.items():
-        print(f"{obj}: {positions}")
-    
-    while True:
-        query = input("Enter the name of an object to get its history or type 'exit' to quit: ")
-        if query.lower() == 'exit':
-            break
-
-        history = get_object_history(query, object_tracking_dict)
-        if history:
-            print(f"History of '{query}': {history}")
-        else:
-            print(f"No history found for '{query}'.")
-
-# Set the path to your JSON file
-if __name__ == '__main__':
-    json_file_path = 'app/data.json'
-    main(json_file_path)
-    main(json_file_path)
-    main(json_file_path)
-    main(json_file_path)
-
-
-
-
-
-
-
-
-
-
-
-
-
+def print_object_history(object_name):
+    object = object_history[object_name]
+    print(object) 
