@@ -1,10 +1,3 @@
-import datetime
-import json
-import time
-import os
-
-json_data = {}
-object_history = {}
 
 def find_changes(new_data, old_data):
     changed_items = []
@@ -24,29 +17,31 @@ def find_changes(new_data, old_data):
 
     return changed_items
 
-def read_and_update_json(file_path):
+def read_and_update_json(file_path,json_data,object_history):
     global json_data
     while True:
         try:
             with open(file_path, 'r') as file:
                 new_data = json.load(file)
+
                 if new_data != json_data:
+                    print("New data identified.")
                     changes = find_changes(new_data,json_data)
                     json_data = new_data
-                    print(changes)
+                    print(json_data)
                     current_time = datetime.datetime.now().strftime("%H:%M:%S")
+
                     for items in changes:
                         if items['Name'] in object_history:
-                            print_object_history(items['Name'])
+                            print(f'New object: {print_object_history(items['Name'])}')
                             object_history[items['Name']][current_time] = items['Location']
                         else:
                             object_history[items['Name']] = {current_time:items['Location']}
-                else:
-                    print("No new data, closing shop!")
+
         except Exception as e:
             print(f"Error reading JSON file: {e}")
+
         time.sleep(5)  # Update interval, change as needed
 
-def print_object_history(object_name):
-    object = object_history[object_name]
-    print(object) 
+def print_object_history(object_history, object_name):
+    return object_history[object_name]
