@@ -26,11 +26,9 @@ def home():
 @app.route('/ask', methods=['POST'])
 def ask():
     question = request.json.get("question", "")
-    print(json_data)
-    print(object_history)
     answer = answer_question(question, json_data, object_history)
-    print(answer)
     print(f'Question: {question}')
+    print(answer)
     # Logic to process the question would go here
     # For now, just returning the question as a placeholder
     return jsonify({"answer": f"{answer}"})
