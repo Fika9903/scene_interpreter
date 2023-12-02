@@ -1,8 +1,6 @@
-from flask import Flask, request, jsonify, render_template
-from app.question_answerer import QuestionAnswerer
+from flask import Flask, request, jsonify, render_template, session
 from dotenv import load_dotenv
 import openai
-import langchain
 import os
 import datetime
 import json
@@ -13,22 +11,29 @@ load_dotenv("config.env")
 secret_key = os.getenv("API_KEY")
 
 app = Flask(__name__)
-question_answerer = QuestionAnswerer(secret_key)
+app.secret_key = 'your_secret_key'
 
 json_data = [] # Lagrar en direkt kopia av UE:s genererade lista av Objekt samt dess beskrivningar
 object_history = {} # Lagrar en historik av objektens position under olika klockslag. Uppdateras när ett objekt rör sig.
 
+@app.before_request
+def make_session_permanent():
+    session.permanent = True
+
 
 @app.route("/")
 def home():
+    session['conversation_history'] = [] # Lagrar konversationer i en cookie, finns det inte genereras en tom lista i kakan!
     return render_template("index.html")
 
 @app.route('/ask', methods=['POST'])
 def ask():
+    print(session['conversation_history'])
     question = request.json.get("question", "")
     answer = answer_question(question, json_data, object_history)
     print(f'Question: {question}')
     print(answer)
+    print(session['conversation_history'])
     # Logic to process the question would go here
     # For now, just returning the question as a placeholder
     return jsonify({"answer": f"{answer}"})
@@ -98,8 +103,6 @@ def print_object_history(arguments_json):
 
 def answer_question(question: str, scene, object_history) -> str:
     scene_context = json.dumps(scene)
-    object_history_json = json.dumps(object_history)
-
     openai.api_key = secret_key
     function_description = [
         {
@@ -118,17 +121,17 @@ def answer_question(question: str, scene, object_history) -> str:
         }
     ]
 
-    messages = [
-        {"role": "system", "content": "Your job is to examine a Scene description given in JSON format and answer a question given regarding the scene."},
-        {"role": "user", "content": scene_context},
-        {"role": "user", "content": question}
-    ]
+    if session['conversation_history'] == []:
+        print('empty list, appending system message and scene context.')
+        session['conversation_history'].append({"role": "system", "content": "Your job is to examine a Scene description given in JSON format and answer a question given regarding the scene."})
+        session['conversation_history'].append({"role": "user", "content": scene_context})
 
+    session['conversation_history'].append({"role": "user", "content": question})
+
+    # Make the API call
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo-1106",
-        messages=messages,
-        #messages=[{"role": "system", "content": "Your job is to examine a Scene description given in JSON format and answer a question given regarding the scene."},
-        #{"role": "user", "content": scene_context + "\n" + question}],
+        messages=session['conversation_history'],
         functions=function_description,
         function_call="auto"
     )
@@ -136,35 +139,32 @@ def answer_question(question: str, scene, object_history) -> str:
     response_message = response.choices[0].message
     print(response_message)
 
+    # Check for function_call in the response
     if 'function_call' in response_message:
+        # Extract object name and call the function
         object_name = eval(response_message['function_call']['arguments']).get("object_name")
-        print(object_name)
-
-        # Prepare arguments for the print_object_history function
         function_args = {"object_history": object_history, "object_name": object_name}
         function_args_json = json.dumps(function_args)
-
-        # Call the print_object_history function
         function_response = print_object_history(arguments_json=function_args_json)
-        print(function_response)
 
-    print(function_response)
-    second_response = openai.ChatCompletion.create(
+        # Append the function response to the conversation history
+        session['conversation_history'].append({"role": "function", "name": "print_object_history", "content": function_response})
+        
+        # Make the second API call if needed
+        second_response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo-1106",
-            messages=[
-                {"role": "user", "content": question},
-                response_message,
-                {
-                "role": "function",
-                "name": "print_object_history",
-                "content": function_response
-                },
-                
-            ],
+            messages=session['conversation_history']
         )
-    
-    print (second_response['choices'][0]['message']['content'])
-    return second_response.choices[0].message.content.strip()
+        second_response_message = second_response.choices[0].message.content.strip()
+        session['conversation_history'].append({"role": "assistant", "content": second_response_message})
+        session.modified = True  # Mark session as modified
+        return second_response_message
+    else:
+        # For non-function-call responses, append the assistant's message and return
+        session['conversation_history'].append({"role": "assistant", "content": response_message['content']})
+        session.modified = True  # Mark session as modified
+        return response_message['content']
+
 
 
 if __name__ == '__main__':
