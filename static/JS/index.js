@@ -12,6 +12,19 @@ function sendMessage() {
     var userInput = document.getElementById("UserInput").value;
     sendMessageHelper(userInput);
 }
+
+
+//text to speach 
+
+function Text_To_Speach(){
+    let utterance = new SpeechSynthesisUtterance();
+
+    utterance.text = text;
+    utterance.voice = window.speechSynthesis.getVoices()[0];
+
+    window.speechSynthesis.speak(utterance)
+
+}
 // Function to handle sending a message
 function sendMessageHelper(userInput) {
     if (userInput.trim() !== "") {
@@ -46,9 +59,12 @@ function sendMessageHelper(userInput) {
             console.error('Error fetching question:', error);
             botText.innerText = "Error: " + error;
         });
+        
 
         document.getElementById("UserInput").value = "";  // Clear the input field
     }
+
+    Text_To_Speach(botText.innerText)
 }
 
 // Function to handle key press events
@@ -58,3 +74,8 @@ document.getElementById("UserInput").addEventListener("keypress", function (e) {
     }
 });
 document.querySelector("#asker button").addEventListener("click", sendMessage);
+
+
+
+
+
