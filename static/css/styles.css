@@ -121,3 +121,36 @@ input {
 }
 
 /* Add this after your existing styles for #interpretResult and #askResult */
+
+
+.toggle-btn {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+    background-color: #ccc;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.toggle-btn:before {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-color: #fff;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    transition: transform 0.3s;
+}
+
+
+.toggle-btn.on {
+    background-color: #4CAF50; /* Green color, you can change it */
+}
+
+.toggle-btn.on:before {
+    transform: translateX(25px);
+}
