@@ -16,15 +16,13 @@ function sendMessage() {
 
 //text to speach 
 
-function Text_To_Speach(){
+function Text_To_Speech(text) {
     let utterance = new SpeechSynthesisUtterance();
-
     utterance.text = text;
-    utterance.voice = window.speechSynthesis.getVoices()[0];
-
-    window.speechSynthesis.speak(utterance)
-
+    utterance.voice = window.speechSynthesis.getVoices()[3];
+    window.speechSynthesis.speak(utterance);
 }
+
 // Function to handle sending a message
 function sendMessageHelper(userInput) {
     if (userInput.trim() !== "") {
@@ -74,6 +72,10 @@ document.getElementById("UserInput").addEventListener("keypress", function (e) {
     }
 });
 document.querySelector("#asker button").addEventListener("click", sendMessage);
+
+
+
+sendMessageHelper("Hello, this is a user message.");
 
 
 
