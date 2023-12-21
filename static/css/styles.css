@@ -1,7 +1,3 @@
-div {
-    text-align: left; /* Aligns text to the left */
-    padding-left: 10px; /* Adds some space between the text and the left side of the div */
-}
 
 
 * {
@@ -30,6 +26,18 @@ input {
     font-size: 1.25rem; /* Relative font size */
 }
 
+
+
+
+.tooggletext{
+    color: white;
+    font-size: 10px;
+}
+
+
+
+
+
 #chat-container {
     display: flex;
     flex-direction: column;
@@ -56,7 +64,7 @@ input {
 
 #asker button {
     position: absolute;
-    bottom: 17px;
+    bottom: 6px;
     right: 15px;
     width: 40px;
     height: 40px;
@@ -69,6 +77,10 @@ input {
     padding: 10px;
     width: 100%;
     overflow-y: auto;
+}
+#chatbox p {
+    text-align: center;
+    
 }
 
 .bubble {
@@ -83,7 +95,7 @@ input {
 
 .user_bubble, .Bot_Bubble {
     text-align: left;
-    text-indent: 0;
+    
     padding-left: 10px; /* Adjust as needed */
     margin-left: 0; /* Adjust as needed */
     white-space: normal; /* This ensures text wraps */
@@ -91,7 +103,7 @@ input {
     font-size: 1rem; /* Relative font size */
     padding: 10px;
     color: white;
-    text-indent: 10%;
+    
 }
 
 .Bot_Bubble {
@@ -123,34 +135,75 @@ input {
 /* Add this after your existing styles for #interpretResult and #askResult */
 
 
-.toggle-btn {
-    position: relative;
+/* Styling for the toggle button */
+.switch {
+    position: fixed;
     display: inline-block;
-    width: 50px;
-    height: 25px;
-    background-color: #ccc;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.toggle-btn:before {
-    content: "";
+    width: 60px;
+    height: 34px;
+    margin-bottom: 50px;
+    bottom: 170px;
+    right: 100px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .slider p {
+    text-align: center;
+   
+  }
+  .slider {
     position: absolute;
-    width: 25px;
-    height: 25px;
-    background-color: #fff;
-    border-radius: 50%;
+    cursor: pointer;
     top: 0;
     left: 0;
-    transition: transform 0.3s;
-}
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 25px;
+    
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 25px;
+  }
+  
+  input:checked + .slider {
+    background-color: green;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px green;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+ 
+#startSpeechRecognition{
+    background-color: white;
+    height: 70px;
+    width: 70px;
 
-
-.toggle-btn.on {
-    background-color: #4CAF50; /* Green color, you can change it */
-}
-
-.toggle-btn.on:before {
-    transform: translateX(25px);
+    position: fixed;
+    bottom: 100px;
+    right: 100px;
+    border-radius: 25px;
 }

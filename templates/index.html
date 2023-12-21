@@ -5,23 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <!---->
     <title>Document</title>
 </head>
 <body>
     <div id="chat-container">
-    
+        <button id="startSpeechRecognition">speech</button>
+        
+            
+            <label class="switch">
+                <input type="checkbox"  id="readBotMessagesCheckbox">
+                <span class="slider"><p></p></span>
+                
+              </label>
+              
         <!--Där input för asker, samt knappen -->
         <div id="asker">
             <input type="text" id="UserInput" placeholder="Ask something"> 
-            <button onclick="sendMessage()">??</button>
-            <button id="startSpeechRecognition">Start Voice Input</button>
-            <button id="readTranscription" class="toggle-btn">Toggle Reading</button>
-
+            <button onclick="sendMessage()">Q</button>
         </div>
 
         <!--Här kommer frågan poppa upp samt svaren-->
         <div id="chatbox"></div>
-    </div>  
+     
             
     <script src="static/JS/index.js"></script>
 </body>

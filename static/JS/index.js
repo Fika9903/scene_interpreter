@@ -1,7 +1,4 @@
 
-
-
-
 var chatbox = document.getElementById("chatbox");
 // Function to handle the scroll event
 function handleScroll() {
@@ -16,16 +13,12 @@ function sendMessage() {
     var userInput = document.getElementById("UserInput").value;
     sendMessageHelper(userInput);
 }
-
-
 //text to speach 
-
-
 
 //speech to text
 let recognition;
 let Transcription = "";
-let isreading = false;
+let isReading = false;
 
 
 if ('webkitSpeechRecognition' in window) {
@@ -49,8 +42,11 @@ if (recognition) {
     // Event listener för när speec recon är klart 
     recognition.onresult = function(event) {
         transcription = event.results[0][0].transcript;
-        document.getElementById("UserInput").innerText = "Transcription: " + transcription;
+        document.getElementById("UserInput").value = "" + transcription;
+
+
     };
+    
 
     // Error speech
     recognition.onerror = function(event) {
@@ -68,14 +64,17 @@ if (recognition) {
     });
 }
 
-document.getElementById("readTranscription").addEventListener("click", function() {
-    if (!isReading) {
-        Text_To_Speech(transcription);
-    } else {
-        window.speechSynthesis.cancel(); // sluta läsa
+document.addEventListener("keydown",function (c){
+    if (c.key == "Ö" || c.key == "ö"){
+        recognition.start();
     }
-    
-    isreading = !isreading
+})
+
+
+document.getElementById("UserInput").addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+        sendMessageHelper(e.target.value);
+    }
 });
 
 function Text_To_Speech(text) {
@@ -87,6 +86,7 @@ function Text_To_Speech(text) {
 
 // Function to handle sending a message
 function sendMessageHelper(userInput) {
+    
     if (userInput.trim() !== "") {
         var userBubble = document.createElement("div");
         userBubble.className = "user_bubble";
@@ -118,31 +118,28 @@ function sendMessageHelper(userInput) {
         .catch(error => {
             console.error('Error fetching question:', error);
             botText.innerText = "Error: " + error;
-        });
-        
+        })
+        .finally(() =>{
+            clearInputField()
+        })
+        ;
 
-        document.getElementById("UserInput").value = "";  // Clear the input field
+        const readBotMessagesCheckbox = document.getElementById('readBotMessagesCheckbox');
+        if (readBotMessagesCheckbox.checked) {
+            Text_To_Speech(data.answer);
+        }}
     }
 
-    Text_To_Speach(botText.innerText)
-    if (isreading){
-        sendMessageHelper(e.target.value)
-    }
+function clearInputField() {
+    document.getElementById("UserInput").value = "";
 }
 
+
 // Function to handle key press events
-document.getElementById("UserInput").addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-        sendMessageHelper(e.target.value);
-    }
-});
 
 
-document.addEventListener("keydown",function (c){
-    if (c.key == "Ö" || c.key == "ö"){
-        recognition.start();
-    }
-})
+
+
 document.querySelector("#asker button").addEventListener("click", sendMessage);
 
 

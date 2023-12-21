@@ -234,7 +234,7 @@ def answer_question(question: str, scene, object_history) -> str:
         reformated = format_history(function_response)
         # Append the function response to the conversation history
         session['conversation_history'].append({"role": "function", "name": "print_object_history", "content": reformated})
-        session['conversation_history'].append({"role": "user", "content": })
+        session['conversation_history'].append({"role": "user", "content":"BAJScontent" })
         
         # Make the second API call if needed
         second_response = openai.ChatCompletion.create(
