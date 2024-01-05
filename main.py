@@ -165,26 +165,15 @@ def format_history(data_json):
 
 
 def answer_question(question: str, scene, object_history) -> str:
-    scene_context = json.dumps(scene)
-    openai.api_key = secret_key
-    function_description = [
-        {
-            "name": "print_object_history",
-            "description": "Retrieve and return the historical data of a specified object.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "object_name": {
-                        "type": "string",
-                        "description": "The name of the object for which to retrieve historical data."
-                    }
-                },
-                "required": ["object_name"]
-            }
-        }
-    ]
+    scene_context = json.dumps(scene)# Step 1: Parse the JSON string
+    scene_data = json.loads(scene_context)
 
-    
+    # Step 2 and 3: Extract Object Names and concatenate them
+    object_details = '; '.join([f"Name: {obj['Name']}, Description: {obj['Description']}" 
+                            for obj in scene_data 
+                            if 'Name' in obj and 'Description' in obj])
+
+    openai.api_key = secret_key
     function_description = [
         {
             "name": "print_object_history",
@@ -205,11 +194,10 @@ def answer_question(question: str, scene, object_history) -> str:
         }
     ]
 
-
     if session['conversation_history'] == []:
         print('empty list, appending system message and scene context.')
         session['conversation_history'].append({"role": "system", "content": "Your job is to examine a Scene description given in JSON format and answer a question given regarding the scene. If you use the history tool, answer the question by interpreting the historical coordinates and try to understand how the objects have moved in reality rather than explaining in terms of coordinates."})
-        session['conversation_history'].append({"role": "user", "content": scene_context})
+        session['conversation_history'].append({"role": "user", "content": f"Each object in the scene: {scene_context}"})
 
     session['conversation_history'].append({"role": "user", "content": question})
 
@@ -234,7 +222,6 @@ def answer_question(question: str, scene, object_history) -> str:
         reformated = format_history(function_response)
         # Append the function response to the conversation history
         session['conversation_history'].append({"role": "function", "name": "print_object_history", "content": reformated})
-        session['conversation_history'].append({"role": "user", "content":"BAJScontent" })
         
         # Make the second API call if needed
         second_response = openai.ChatCompletion.create(
