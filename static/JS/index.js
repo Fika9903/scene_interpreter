@@ -144,8 +144,6 @@ document.querySelector("#asker button").addEventListener("click", sendMessage);
 
 
 
-sendMessageHelper("Hello, this is a user message.");
-
 
 
 
